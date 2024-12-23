@@ -19,6 +19,27 @@ import os
 import re
 import PyPDF2
 
+TSV_INPUT = """
+
+Please paste your TSV index like the one below:
+
+```tsv
+PDF File Name	Página
+Prefácio	xiii
+Introdução	1
+Capítulo 1 - Algumas Lógicas Paraconsistentes	19
+Capítulo 2 - Paraconsistência e Conjuntos	35
+Capítulo 3 - Esboço de Duas Aplicações: Teoria Paraconsistente de Modelos e Cálculo Infinitesimal Paraconsistente	77
+A Lógica Paraconsistente: História de uma Revolução Conceitual	99
+Paraconsistência: Esboço de uma Interpretação	113
+A Lógica Pode Ser Simples (Lógica, Congruência e Álgebra)	151
+```
+
+You don't need to add the markdown tags, just paste the tsv directly and them...
+
+Press Enter when you're done, and then press Ctrl+D (on Linux/Mac) or Ctrl+Z (on Windows) to finish.\n
+"""
+
 # -- Helpers --
 
 def roman_to_int(roman: str) -> int:
@@ -68,7 +89,7 @@ def main():
     pdf_path = sys.argv[1]
 
     # 1. Ask the user to input the TSV.
-    print("Please paste your TSV index below. Press Enter when you're done, and then press Ctrl+D (on Linux/Mac) or Ctrl+Z (on Windows) to finish.\n")
+    print(TSV_INPUT)
     # We'll read from sys.stdin until EOF.
     tsv_lines = sys.stdin.read().strip().splitlines()
 
